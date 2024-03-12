@@ -17,9 +17,9 @@ const storage = multer.diskStorage ({
 const upload = multer({storage})
 
 router.post('/addsera' , upload.single('image') , SeraController.addSera )
-router.put('/editsera/:id' , upload.single('image') , SeraController.updateSera )
 router.get('/' , SeraController.getAllSera)
 router.get('/:id' , SeraController.getSeraByID)
+router.delete('/delete/:id' , SeraController.deleteSera)
 
 
 

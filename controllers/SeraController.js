@@ -45,16 +45,10 @@ exports.getSeraByID = (req , res)=>{
         })
 }
 
-//modifier le sera
-exports.updateSera = (req , res)=>{
-    let id = req.params.id
-    const imagePath = path.join(__dirname,'../' , req.file.path)
-
-    Sera.updateOne({_id : id  , image : imagePath})
-        .then(() =>{
-            res.status(200).json({message : "Mise a jour a 5 sur 5"})
-        })
-        .catch((error)=>{
-            res.status(500).json({erreur : error})
-        })
+//delete 
+exports.deleteSera = (req,  res)=>{
+    let id = req.params.id;
+    Sera.deleteOne({_id : id})
+        .then(()=> res.status(200).json({message : 'bien supprimmer'}))
+        .catch((e) => res.status(500).json({error : e.message}))
 }
