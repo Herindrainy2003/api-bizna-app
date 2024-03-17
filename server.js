@@ -7,10 +7,7 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 ConnectDb()
-
-
-
-
+ 
 app.use('/api/sera/' ,SeraRoute)
 
 const PORT = process.env.PORT
