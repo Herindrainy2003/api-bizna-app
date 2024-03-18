@@ -1,10 +1,13 @@
-const { timeStamp } = require('console');
 const Sera = require('../models/Sera.js')
 const path = require('path') 
 
-//ajoutez sera
+
+//le controller pour l'ajout de sera 
 exports.addSera = (req , res)=>{
-    const imagePath = path.join(__dirname,'../' , req.file.path);
+    if (!req.file) {
+        return res.status(400).json({ message: 'Aucun fichier téléchargé' });
+    }
+
     Sera.create({
         nameSera : req.body.nameSera ,
         price : req.body.price ,
@@ -12,7 +15,11 @@ exports.addSera = (req , res)=>{
         contact : req.body.contact ,
         category : req.body.category,
         nameFacebook : req.body.nameFacebook ,
-        image : imagePath
+        image : {
+            data : req.file.buffer,
+            contentType: req.file.mimetype
+
+        }
     })
         .then(()=>{
             res.status(201).json({message : 'Sera bien ajouter'})
@@ -31,6 +38,7 @@ exports.getAllSera = (req , res) =>{
         })
 
 }
+
 
 //afficher par id
 exports.getSeraByID = (req , res)=>{
