@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const SeraController = require('../controllers/SeraController') 
-const { diskStorage } = require('multer')
 const multer = require('multer')
 
 
