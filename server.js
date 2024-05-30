@@ -9,8 +9,13 @@ const delPro = require('./config/deleteProduit');
 dotenv.config()
 ConnectDb()
 
- // Activer CORS avec les options spécifiées
-app.use(cors());
+// Autoriser uniquement les requêtes provenant de l'origine de votre application React
+const corsOptions = {
+    origin: 'https://seramalaky.onrender.com'
+  };
+  
+  // Activer CORS avec les options spécifiées
+  app.use(cors(corsOptions));
   
 
 app.use('/api/sera/' ,SeraRoute)
