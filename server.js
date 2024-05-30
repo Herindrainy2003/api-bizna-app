@@ -5,17 +5,12 @@ const SeraRoute = require('./Routes/SeraRoute')
 const routerTadySera = require('./Routes/SeraTadiavinaRoutes')
 const dotenv = require('dotenv')
 const cors = require('cors');
-
+const delPro = require('./config/deleteProduit');
 dotenv.config()
 ConnectDb()
- 
-// Autoriser uniquement les requêtes provenant de l'origine de votre application React
-const corsOptions = {
-    origin: 'https://seramalaky.onrender.com'
-  };
-  
-  // Activer CORS avec les options spécifiées
-  app.use(cors(corsOptions));
+
+ // Activer CORS avec les options spécifiées
+app.use(cors());
   
 
 app.use('/api/sera/' ,SeraRoute)
